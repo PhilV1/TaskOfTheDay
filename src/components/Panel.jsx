@@ -3,7 +3,7 @@ import classNames from 'classnames';
 function Panel({ children, className, ...rest }) {
   const classes = classNames(
     className,
-    'bg-white p-4 rounded-lg text-2xl font-bold m-8'
+    'bg-white p-4 rounded-lg text-xl font-bold m-8'
   );
 
   return (

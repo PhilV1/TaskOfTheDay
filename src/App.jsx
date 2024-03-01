@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Panel from './components/Panel';
 import ClipLoader from 'react-spinners/ClipLoader';
+import Searchbar from './components/Searchbar';
 
 const url = 'https://www.boredapi.com/api/activity';
 
@@ -35,15 +36,20 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-500 flex-col text-4xl">
-      <h1 className="font-bold text-white">Task of the day.</h1>
-
+    <div className="flex justify-center items-center h-screen bg-slate-500 flex-col ">
+      <h1 className="font-bold text-white py-4 text-3xl">Task generator.</h1>
       {loading ? (
-        <div className="my-8">
-          <ClipLoader color={'#22c55e'} loading={loading} size={50} />
-        </div>
+        <ClipLoader
+          color={'#22c55e'}
+          loading={loading}
+          size={50}
+          className="my-8"
+        />
       ) : (
-        <Panel>{data}</Panel>
+        <div className="flex">
+          <Panel>{data}</Panel>
+          <button className="bg-red-500 h-fit my-8">Save</button>
+        </div>
       )}
       <button
         className="bg-white rounded-md text-xl font-medium p-2 hover:bg-green-500 duration-200 ease-in-out"
@@ -51,6 +57,12 @@ function App() {
       >
         Another Task
       </button>
+      <div>
+        <h2 className="text-white font-bold text-center py-4 text-3xl">
+          ToDo List
+        </h2>
+        <Searchbar />
+      </div>
     </div>
   );
 }
